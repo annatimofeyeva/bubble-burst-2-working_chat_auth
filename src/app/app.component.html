@@ -26,6 +26,20 @@
       <li role="presentation"><a style="font-size:30px" routerLink="about">About</a></li>
       <li role="presentation"><a style="font-size:30px" routerLink="highscores">High Scores</a></li>
     </ul>
+
+    <!-- <div class="row columns"> -->
+  <div class="well">
+  <button class="btn btn-primary" (click)="login()" *ngIf="!(user | async)?.uid">Gmail Login</button>
+  <button class="btn btn-info" (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
+  <p class="lead" *ngIf="isLoggedIn">{{userName}}</p>
+
+  <input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="Enter feedback here..." (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
+</div>
+  <!-- <div id="details-container"> -->
+    <div class="well">
+      <p *ngFor="let item of items | async">{{userName}}: {{item.message}} {{item.$key}}</p></div>
+  <!-- </div> -->
+<!-- </div> -->
     <!-- <div>
 
       <h3><a routerLink="">Home</a></h3>
